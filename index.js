@@ -90,7 +90,7 @@ const data = {
     1000: ["This luxury brand started by making trunks for traveling aristocrats in 1854.", 
            "Many historians mark this date — as the day the United States officially entered World War II. (answer with full date)", 
            "What is the main reason new planets don’t form in the asteroid belt?", 
-           "In which movie does a missing woman reveal she orchestrated her own disappearance to frame her husband?", 
+           "This film explores themes of gender identity and discrimination, and is based on the real-life murder of Brandon Teena in rural 1990s America.", 
            "This German phrase, displayed at the entrance of the Auschwitz concentration camp as part of Nazi propaganda, translates to “Arbeit macht frei.”", 
            "As of 2025, how many total Olympic and World Championship medals has Simone Biles—the most decorated gymnast in history—won?", 
            "Q7?", 
@@ -103,10 +103,10 @@ const data = {
     400:  ["Nokia", "Vlad the Impaler", "the Trinity test", "Password", "you only live once", "2018", "your idol", "purple"],
     500:  ["Nike", "Catherine the Great", "Ada Lovelace", "A bear", "antonym", "Uruguay", "if we had each other", "The mosquito"],
     600:  ["Samsung", "Treaty of Versailles", "Quarks", "Donald Trump", "away from keyboard", "Alexandra Trusova", "spit in my face", "Jeffrey Dahmer"],
-    700:  ["Burberry", "Australia?", "Liver", "Snow White And The Seven Dwarfs", "bibliophile", " Los Angeles Lakers", "when we were young", "River Styx"],
-    800:  ["Google", "Night Witches", "supernova", "The Plastics", "salary", "Melissa Vargas", "wolf in sheep's clothing", "narcissism, machiavellianism, and psychopathy"],
-    900:  ["Papa John's", "December 31", "Solvay", "The Flying Dutchman", "cameo", "36", "tantrum", "zero"],
-    1000: ["Louis Vuitton", "December 7, 1941", "Jupiter", "Gone Girl", "Work makes you free", "41", "wrong", "“Ley del Ex” or “Triple Ley del Ex”"]
+    700:  ["Burberry", "Australia?", "Liver", "Snow White And The Seven Dwarfs", "bibliophile", " Los Angeles Lakers", "the sound of silence", "River Styx"],
+    800:  ["Google", "Night Witches", "supernova", "The Plastics", "salary", "Melissa Vargas", "when we were young", "narcissism, machiavellianism, and psychopathy"],
+    900:  ["Papa John's", "December 31", "Solvay", "The Flying Dutchman", "cameo", "36", "wolf in sheep's clothing", "zero"],
+    1000: ["Louis Vuitton", "December 7, 1941", "Jupiter", "Boys Don't Cry", "Work makes you free", "41", "wrong", "“Ley del Ex” or “Triple Ley del Ex”"]
   }
 };
 
