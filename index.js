@@ -92,4 +92,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ===== Close Modal =====
   closeBtn.onclick = () => {
-    mod
+    modal.style.display = "none";
+  }
+
+  // ===== Scoreboard Buttons =====
+  scoreboard.addEventListener("click", e => {
+    if(e.target.classList.contains("add-btn")){
+      const idx = e.target.dataset.index;
+      teams[idx].score += currentQuestionValue;
+      teams[idx].scoreHistory.push(currentQuestionValue);
+      document.getElementById(`score-${idx}`).textContent = teams[idx].score;
+      e.target.textContent = `+${currentQuestionValue}`;
+    }
+    if(e.target.classList.contains("subtract-btn")){
+      const idx = e.target.dataset.index;
+      const lastPoints = teams[idx].scoreHistory.pop();
+      if(lastPoints){
+        teams[idx].score -= lastPoints;
+        document.getElementById(`score-${idx}`).textContent = teams[idx].score;
+      }
+    }
+  });
+});
