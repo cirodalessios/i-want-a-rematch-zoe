@@ -1,4 +1,4 @@
-// ===== Default Teams =====
+// ===== Teams =====
 const teams = [
   { name: "Teen Titans", score: 0, scoreHistory: [] },
   { name: "Powerpuff Girls", score: 0, scoreHistory: [] },
@@ -8,53 +8,30 @@ const teams = [
 
 let currentQuestionValue = 0;
 let currentCategoryIndex = null;
-let currentAudio = null; // For manual audio control
+let currentAudio = null;
 
-// ===== Categories & Questions (with optional audio) =====
+// ===== Categories & Questions =====
 const data = {
   categories: [
-    "Music", "Soundtrack", "Slang", "Movies", 
+    "Music", "Soundtrack", "Slang", "Movies",
     "Creepypasta", "Logos", "Propaganda", "Random"
   ],
   questions: {
     200: [
-      { text: "Track name?", audio: "https://raw.githubusercontent.com/username/repo/main/audio/track1.mp3" },
-      { text: "Identify the movie from this musical theme.", audio: "https://raw.githubusercontent.com/username/repo/main/audio/track2.mp3" },
-      { text: "Track name?" },
-      { text: "Track name?" },
-      { text: "Track name?" },
-      { text: "Track name?" },
-      { text: "Track name?" },
-      { text: "Track name?" }
-    ],
-    300: [
-      { text: "Track name?", audio: "https://raw.githubusercontent.com/username/repo/main/audio/track3.mp3" },
-      { text: "Identify the movie from this musical theme." },
-      { text: "Identify the movie from this musical theme." },
-      { text: "Identify the movie from this musical theme." },
-      { text: "Identify the movie from this musical theme." },
-      { text: "Identify the movie from this musical theme." },
-      { text: "Identify the movie from this musical theme." },
-      { text: "Identify the movie from this musical theme." }
+      { text: "Name this track?", audio: "https://raw.githubusercontent.com/username/repo/main/audio/track1.mp3" },  // Music
+      { text: "Identify the movie from this theme", audio: "https://raw.githubusercontent.com/username/repo/main/audio/track2.mp3" }, // Soundtrack
+      { text: "Slang question 1" },
+      { text: "Movies question 1" },
+      { text: "Creepypasta question 1" },
+      { text: "Logo question 1", image: "https://raw.githubusercontent.com/username/repo/main/images/logo1.png" },
+      { text: "Propaganda question 1", image: "https://raw.githubusercontent.com/username/repo/main/images/propaganda1.png" },
+      { text: "Random question 1" }
     ]
-    // … continue for 400, 500 … 900
-    400:  ["Q1?", "Q2?", "Q3?", "Q4?", "Q5?", "Q6?", "Q7?", "Q8?"],
-    500:  ["Q1?", "Q2?", "Q3?", "Q4?", "Q5?", "Q6?", "Q7?", "Q8?"],
-    600:  ["Q1?", "Q2?", "Q3?", "Q4?", "Q5?", "Q6?", "Q7?", "Q8?"],
-    700:  ["Q1?", "Q2?", "Q3?", "Q4?", "Q5?", "Q6?", "Q7?", "Q8?"],
-    800:  ["Q1?", "Q2?", "Q3?", "Q4?", "Q5?", "Q6?", "Q7?", "Q8?"],
-    900:  ["Q1?", "Q2?", "Q3?", "Q4?", "Q5?", "Q6?", "Q7?", "Q8?"],
+    // Repeat for 300,400,...900
   },
   answers: {
-    200: ["Coca-Cola", "Macedonian Greek", "speed of light", "I am inevitable.", "‘to die’", "Imane Khelif / Iman Khalif", "gabriela", "1930"],
-    300: ["Microsoft", "Abraham Lincoln", "ENIAC", "Ursula", "Hasta la vista", "Soccer (football)", "mind over matter", "eggs"]
-    // … continue for 400, 500 … 900
-    400:  ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8"],
-    500:  ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8"],
-    600:  ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8"],
-    700:  ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8"],
-    800:  ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8"],
-    900:  ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8"],
+    200: ["Coca-Cola", "Macedonian Greek", "Slang answer 1", "Movies answer 1", "Creepypasta answer 1", "Nike", "WWII Poster", "Random answer 1"]
+    // Repeat for 300,400,...900
   }
 };
 
@@ -62,15 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const board = document.getElementById("board");
   const modal = document.getElementById("modal");
   const questionText = document.getElementById("questionText");
+  const questionImage = document.getElementById("questionImage");
   const showAnswerBtn = document.getElementById("showAnswerBtn");
-  const playAudioBtn = document.getElementById("playAudioBtn"); // NEW
+  const playAudioBtn = document.getElementById("playAudioBtn");
   const closeBtn = document.getElementById("closeBtn");
 
   // ===== Scoreboard =====
-  const scoreboard = document.createElement("div");
-  scoreboard.id = "scoreboard";
-  document.body.insertBefore(scoreboard, document.querySelector(".board-container"));
-
+  const scoreboard = document.getElementById("scoreboard");
   teams.forEach((team, i) => {
     const div = document.createElement("div");
     div.className = "team-box";
@@ -91,9 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
     board.appendChild(header);
   });
 
-  const pointsValues = [200, 300, 400, 500, 600, 700, 800, 900];
+  const pointsValues = [200,300,400,500,600,700,800,900];
   pointsValues.forEach(points => {
-    for (let c = 0; c < data.categories.length; c++) {
+    for(let c=0;c<data.categories.length;c++){
       const box = document.createElement("div");
       box.className = "box";
       box.textContent = points;
@@ -102,17 +77,26 @@ document.addEventListener("DOMContentLoaded", () => {
         currentQuestionValue = points;
         currentCategoryIndex = c;
 
-        const question = data.questions[points][c];
-        questionText.textContent = question.text;
-        questionText.dataset.answer = data.answers[points][c] || "";
+        const question = data.questions[points]?.[c];
+        if(!question) return; // skip if no question
 
-        // Reset audio
+        questionText.textContent = question.text;
+        questionText.dataset.answer = data.answers[points]?.[c] || "";
+
+        // Image handling
+        if(question.image){
+          questionImage.src = question.image;
+          questionImage.style.display = "block";
+        } else {
+          questionImage.style.display = "none";
+        }
+
+        // Audio handling (only Music/Soundtrack)
         if(currentAudio) currentAudio.pause();
         currentAudio = question.audio ? new Audio(question.audio) : null;
 
         modal.style.display = "flex";
 
-        // mark used & prevent multiple clicks
         box.classList.add("used");
         board.querySelectorAll('.box').forEach(b => b.style.pointerEvents = 'none');
         box.style.pointerEvents = 'none';
@@ -130,34 +114,29 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== Play Audio (manual) =====
   playAudioBtn.onclick = () => {
     if(currentAudio){
-      currentAudio.currentTime = 0; // restart
+      currentAudio.currentTime = 0;
       currentAudio.play();
     }
   };
 
   // ===== Close Modal =====
-  closeBtn.onclick = () => {
+  const closeModal = () => {
     modal.style.display = "none";
     board.querySelectorAll('.box:not(.used)').forEach(box => box.style.pointerEvents = 'auto');
   };
 
-  // ===== Close Modal on click outside =====
-  window.onclick = e => {
-    if(e.target == modal){
-      modal.style.display = "none";
-      board.querySelectorAll('.box:not(.used)').forEach(box => box.style.pointerEvents = 'auto');
-    }
-  };
+  closeBtn.onclick = closeModal;
+  window.onclick = e => { if(e.target==modal) closeModal(); };
 
   // ===== Scoreboard Buttons =====
   scoreboard.addEventListener("click", e => {
     const idx = e.target.dataset.index;
-    if(e.target.classList.contains("add-btn") && idx !== undefined){
+    if(e.target.classList.contains("add-btn") && idx!==undefined){
       teams[idx].score += currentQuestionValue;
       teams[idx].scoreHistory.push(currentQuestionValue);
       document.getElementById(`score-${idx}`).textContent = teams[idx].score;
     }
-    if(e.target.classList.contains("subtract-btn") && idx !== undefined){
+    if(e.target.classList.contains("subtract-btn") && idx!==undefined){
       const lastPoints = teams[idx].scoreHistory.pop();
       if(lastPoints){
         teams[idx].score -= lastPoints;
@@ -165,4 +144,5 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+
 });
