@@ -12,7 +12,7 @@ const data = {
   categories: ["Music", "Soundtrack", "Slang", "Movies", "Creepypasta", "Logos", "Propaganda", "Random"],
   questions: {
     200: [
-      { text: "Name this track?", audio: "https://raw.githubusercontent.com/username/repo/main/audio/track1.mp3" },
+      { text: "Name this track?", audio: "ID3" },
       { text: "Identify the movie from this theme", audio: "https://raw.githubusercontent.com/username/repo/main/audio/track2.mp3" },
       { text: "Slang question 1" },
       { text: "Movies question 1" },
