@@ -39,9 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const questionText = document.getElementById("questionText");
   const showAnswerBtn = document.getElementById("showAnswerBtn");
   const closeBtn = document.getElementById("closeBtn");
-  const scoreboard = document.getElementById("scoreboard");
 
-  // ===== Build Scoreboard =====
+  // ===== Scoreboard Setup =====
+  const scoreboard = document.createElement("div");
+  scoreboard.id = "scoreboard";
+  
+  const boardContainer = document.querySelector(".board-container");
+  if (boardContainer) {
+    document.body.insertBefore(scoreboard, boardContainer);
+  }
+
   teams.forEach((team, i) => {
     const div = document.createElement("div");
     div.className = "team-box";
@@ -54,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scoreboard.appendChild(div);
   });
 
-  // ===== Build Board Headers =====
+  // ===== Board Headers =====
   data.categories.forEach(cat => {
     const header = document.createElement("div");
     header.className = "header";
@@ -62,8 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
     board.appendChild(header);
   });
 
-  // ===== Build Question Boxes =====
-  const pointsValues = [200,300,400,500,600,700,800,900];
+  // ===== Question Boxes =====
+  const pointsValues = [200, 300, 400, 500, 600, 700, 800, 900];
   pointsValues.forEach(points => {
     for (let c = 0; c < data.categories.length; c++) {
       const box = document.createElement("div");
@@ -82,17 +89,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ===== Show Answer Button =====
+  // ===== Modal Controls =====
   showAnswerBtn.onclick = () => {
     questionText.textContent = questionText.dataset.answer;
   };
 
-  // ===== Close Modal =====
   closeBtn.onclick = () => {
     modal.style.display = "none";
   };
 
-  // ===== Scoreboard Buttons =====
+  // ===== Scoreboard Logic =====
   scoreboard.addEventListener("click", e => {
     if (e.target.classList.contains("add-btn")) {
       const idx = e.target.dataset.index;
@@ -101,10 +107,11 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById(`score-${idx}`).textContent = teams[idx].score;
       e.target.textContent = `+${currentQuestionValue}`;
     }
+    
     if (e.target.classList.contains("subtract-btn")) {
       const idx = e.target.dataset.index;
       const lastPoints = teams[idx].scoreHistory.pop();
-      if (lastPoints) {
+      if (lastPoints !== undefined) {
         teams[idx].score -= lastPoints;
         document.getElementById(`score-${idx}`).textContent = teams[idx].score;
       }
