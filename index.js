@@ -62,7 +62,7 @@ const data = {
     700: ["summertime sadness","gumball","nepo baby","Am I pretty? (or Am I beautiful?)","Ratatouille","Nvidia","British","88"],
     800: ["lost on you","powerpuff girls","glazing","Go to sleep.","The Little Mermaid","Outlook","German","Zoo"],
     900: ["industry baby",
-          "Euphoria","the ICK","Kill a close family member (or Murder a relative/ Kill a sibling/parent)","Willy Wonka & the Chocolate factory","Hermes","Chinese","Q"]
+          "Euphoria","the ICK","Kill a close family member (or Murder a relative or Kill a sibling or parent)","Willy Wonka & the Chocolate factory","Hermes","Chinese","Q"]
   }
 };
 
