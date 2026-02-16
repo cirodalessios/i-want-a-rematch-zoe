@@ -15,14 +15,7 @@ const data = {
     "Meaning", "Sports", "Music", "Random"
   ],
   questions: {
-    100:  ["This company’s theme park workers are not allowed to break character or point with a single finger — it must be two fingers or an open hand.",
-           "This European movement, starting in the 14th century, is called the 'rebirth' of classical art, literature, and learning.", 
-           "This law, formulated by Charles Darwin and Alfred Russel Wallace, explains how species evolve over generations.", 
-           "Joy, Fear, Anger, Disgust, and Sadness guide whose emotions in Inside Out?", 
-           "Used to honor someone’s skill, this Japanese word means “master” and often follows a name.", 
-           "What is the famous rivalry match between FC Barcelona and Real Madrid called?", 
-           "Q7?", 
-           "As of 2025, this football superstar is the most-followed person on Instagram."],
+   
     200:  ["This soda brand launched the “Share a _” campaign featuring people's names on bottles.", 
            "Cleopatra, the famed queen known for her charm and diplomacy, belonged to which ethnic group?", 
            "The fastest thing in the universe, traveling at approximately 299,792 km/s.", 
@@ -87,17 +80,10 @@ const data = {
            "What is the record for red cards given in a single soccer game?", 
            "Q7?", 
            "How many Oscars did the Harry Potter film series win?"],
-    1000: ["This luxury brand started by making trunks for traveling aristocrats in 1854.", 
-           "Many historians mark this date — as the day the United States officially entered World War II. (answer with full date)", 
-           "What is the main reason new planets don’t form in the asteroid belt?", 
-           "This film explores themes of gender identity and discrimination, and is based on the real-life murder of Brandon Teena in rural 1990s America.", 
-           "This German phrase, displayed at the entrance of the Auschwitz concentration camp as part of Nazi propaganda, translates to “Arbeit macht frei.”", 
-           "As of 2025, how many total Olympic and World Championship medals has Simone Biles—the most decorated gymnast in history—won?", 
-           "Q7?", 
-           "In the show Disney 11, Alejandro, Ciro, and Ezequiel left the Hawks to join the Imperial Eagles. In their first match against their former team, each scored a goal. What is this phenomenon called in football?"]
+   
   },
   answers: {
-    100:  ["Disney", "Renaissance", "natural selection", "Riley", "-sensei", "El Clásico", "take me to church", "Cristiano Ronaldo"],
+  
     200:  ["Coca-Cola", "Macedonian Greek", "speed of light", "I am inevitable.", "‘to die’", "Imane Khelif / Iman Khalif", "gabriela", "1930"],
     300:  ["Microsoft", "Abraham Lincoln", "ENIAC", "Ursula", "Hasta la vista", "Soccer (football)", "mind over matter", "eggs"],
     400:  ["Nokia", "Vlad the Impaler", "the Trinity test", "Password", "you only live once", "2018", "your idol", "purple"],
@@ -106,8 +92,7 @@ const data = {
     700:  ["Burberry", "Australia?", "Liver", "Snow White And The Seven Dwarfs", "bibliophile", " Los Angeles Lakers", "the sound of silence", "River Styx"],
     800:  ["Google", "Night Witches", "supernova", "The Plastics", "salary", "Melissa Vargas", "when we were young", "narcissism, machiavellianism, and psychopathy"],
     900:  ["Papa John's", "December 31", "Solvay", "The Flying Dutchman", "cameo", "36", "wolf in sheep's clothing", "zero"],
-    1000: ["Louis Vuitton", "December 7, 1941", "Jupiter", "Boys Don't Cry", "Work makes you free", "41", "wrong", "“Ley del Ex” or “Triple Ley del Ex”"]
-  }
+    
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -143,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ===== Build Question Boxes =====
-  const pointsValues = [100,200,300,400,500,600,700,800,900,1000];
+  const pointsValues = [200,300,400,500,600,700,800,900];
   pointsValues.forEach(points => {
     for(let c=0; c<data.categories.length; c++){
       const box = document.createElement("div");
