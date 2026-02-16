@@ -20,7 +20,6 @@ body {
   grid-template-columns: repeat(8, minmax(80px, 1fr));
   grid-auto-rows: 50px;
   gap: 3px;
-  justify-content: flex-start;
 }
 
 .header {
@@ -34,7 +33,6 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
-  word-wrap: break-word;
   padding: 6px;
   font-size: 0.9rem;
 }
@@ -49,7 +47,6 @@ body {
   cursor: pointer;
   transition: 0.2s;
   font-size: 0.85rem;
-  padding: 3px;
 }
 
 .box:hover {
@@ -79,8 +76,8 @@ body {
   padding: 20px;
   width: 75vw;
   max-width: 900px;
-  height: 75vh;
-  max-height: 800px;
+  height: 50vh;
+  max-height: 500px;
   border-radius: 10px;
   position: relative;
   text-align: center;
@@ -95,3 +92,36 @@ body {
   position: absolute;
   right: 10px;
   top: 10px;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+#scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 20px 0;
+}
+
+.team-box {
+  background: #0074D9;
+  color: white;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+  line-height: 1;
+  min-width: 75px;
+  text-align: center;
+}
+
+.team-box button {
+  margin: 2px 0;
+}
+
+@media (max-width: 900px) {
+  .box, .header { font-size: 0.75rem; padding: 4px; }
+}
+
+@media (max-width: 600px) {
+  .box, .header { font-size: 0.7rem; padding: 3px; }
+}
