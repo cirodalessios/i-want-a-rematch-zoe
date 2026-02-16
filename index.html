@@ -1,34 +1,40 @@
-
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Jeopardy Quiz</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Jeopardy Game</title>
+  <style>
+    body { font-family: sans-serif; background: #f2f2f2; }
+    #board { display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px; margin: 20px; }
+    .header { background: #333; color: white; text-align: center; padding: 10px; }
+    .box { background: #00aaff; color: white; text-align: center; padding: 20px; cursor: pointer; }
+    .box.used { background: #999; cursor: default; }
+    #modal { display: none; position: fixed; top: 0; left: 0; width:100%; height:100%; background: rgba(0,0,0,0.8); justify-content:center; align-items:center; }
+    #modalContent { background:white; padding:20px; max-width:600px; width:90%; text-align:center; position:relative; }
+    #scoreboard { display:flex; gap:20px; justify-content:center; margin:20px; }
+    .team-box { background:#fff; padding:10px; border-radius:5px; text-align:center; min-width:120px; }
+    button { margin:5px; }
+    img { max-width:100%; margin-top:10px; }
+  </style>
 </head>
 <body>
 
+  <div id="scoreboard"></div>
+
   <div class="board-container">
-    <div class="board" id="board"></div>
+    <div id="board"></div>
   </div>
 
-  <!-- Modal for Questions -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span id="closeBtn" class="close">&times;</span>
-      <h2 id="questionText"></h2>
+  <div id="modal">
+    <div id="modalContent">
+      <p id="questionText"></p>
+      <img id="questionImage" style="display:none"/>
       <button id="showAnswerBtn">Show Answer</button>
-      <p id="answerText" style="display:none;"></p>
+      <button id="playAudioBtn">Play Audio</button>
+      <button id="closeBtn">Close</button>
     </div>
   </div>
-  <div id="modal">
-  <p id="questionText"></p>
-  <button id="showAnswerBtn">Show Answer</button>
-  <button id="playAudioBtn">Play Audio</button> <!-- NEW -->
-  <button id="closeBtn">Close</button>
-</div>
 
-
-  <script src="index.js"></script>
+  <script src="jeopardy.js"></script>
 </body>
 </html>
