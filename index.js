@@ -91,9 +91,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== Close Modal =====
+  document.addEventListener("DOMContentLoaded", () => {
+  const board = document.getElementById("board");
+  const modal = document.getElementById("modal");
+  const questionText = document.getElementById("questionText");
+  const showAnswerBtn = document.getElementById("showAnswerBtn");
+  const closeBtn = document.getElementById("closeBtn");
+
+  // Close modal
   closeBtn.onclick = () => {
     modal.style.display = "none";
-  }
+  }; // ← semicolon here
+
+}); // ← make sure DOMContentLoaded callback ends here
+
 
   // ===== Scoreboard Buttons =====
   scoreboard.addEventListener("click", e => {
