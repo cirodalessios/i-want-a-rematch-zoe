@@ -2,26 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Jeopardy Game</title>
+  <title>Jeopardy Quiz</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div id="scoreboard"></div>
-
   <div class="board-container">
-    <div id="board"></div>
+    <div class="board" id="board"></div>
   </div>
 
-  <div id="modal">
-    <div id="modalContent">
-      <p id="questionText"></p>
-      <img id="questionImage" style="display:none"/>
-      <div class="modal-controls">
-        <button id="showAnswerBtn">Show Answer</button>
-        <button id="playAudioBtn">Play Audio</button>
-        <button id="closeBtn">Close</button>
-      </div>
+  <!-- Modal for Questions -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="closeBtn" class="close">&times;</span>
+      <h2 id="questionText"></h2>
+      <button id="showAnswerBtn">Show Answer</button>
+      <p id="answerText" style="display:none;"></p>
     </div>
   </div>
 
