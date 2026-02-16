@@ -1,61 +1,66 @@
-
 body {
   font-family: Arial, sans-serif;
-  background: #001f3f;  /* midnight blue */
+  background: #001f3f;
   color: white;
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
+#scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px auto;
+  flex-wrap: wrap;
+}
 
-/* ===== Board Container ===== */
+.team-box {
+  background: #0074D9;
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 120px;
+  border: 1px solid white;
+}
+
 .board-container {
-  overflow-x: auto;       /* horizontal scroll if needed */
-  width: 100%;            
-  max-width: 95vw;        /* don't let it exceed viewport */
-  padding-bottom: 20px;
+  width: 100%;
+  max-width: 95vw;
   margin: 0 auto;
+  overflow-x: auto;
 }
 
-/* ===== Board Grid ===== */
-.board {
+#board {
   display: grid;
-  grid-template-columns: repeat(8, minmax(80px, 1fr)); /* smaller min width */
-  grid-auto-rows: 50px;   /* shorter height for small screens */
-  gap: 3px;
-  justify-content: flex-start;
+  /* 8 columns for your 8 categories */
+  grid-template-columns: repeat(8, minmax(100px, 1fr)); 
+  gap: 5px;
+  padding: 10px;
 }
 
-/* ===== Category Headers ===== */
 .header {
   background: #0074D9;
   border: 2px solid #000;
+  padding: 15px 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  cursor: default;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  word-wrap: break-word;
-  padding: 6px;
-  font-size: 0.9rem;
 }
 
-/* ===== Question Boxes ===== */
 .box {
   background: #003366;
   border: 2px solid #000;
+  aspect-ratio: 4 / 3;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.2s;
-  font-size: 0.85rem;
-  padding: 3px;
+  transition: background 0.2s;
 }
 
 .box:hover {
@@ -65,84 +70,49 @@ body {
 
 .box.used {
   background: #444;
-  color: #444;      /* ← ADD THIS */
+  color: #666;
   cursor: not-allowed;
 }
 
-/* ===== Modal / Flashcard ===== */
-.modal {
+/* Modal Styling */
+#modal {
+  display: none; /* JS toggles this to 'flex' */
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0,0,0,0.8);
-  display: none;            /* hidden by default */
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.9);
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 1000;
 }
 
-
-.modal-content {
-  background: darkblue;
-  color: white;
-  padding: 20px;
-  width: 75vw;       /* 75% of viewport width */
-  max-width: 900px;  /* optional max width for very large screens */
-  height: 75vh;      /* 75% of viewport height */
-  max-height: 800px; /* optional max height */
-  border-radius: 10px;
-  position: relative;
+#modalContent {
+  background: #00008B;
+  padding: 40px;
+  width: 80%;
+  max-width: 800px;
+  border: 4px solid white;
+  border-radius: 15px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;  /* center content vertically */
-  align-items: center;
-  font-size: 1.5rem;        /* bigger text for readability */
 }
 
+#questionText {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
 
-.close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+#questionImage {
+  max-width: 100%;
+  max-height: 300px;
+  margin: 20px auto;
+  display: block;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
   cursor: pointer;
-  font-size: 22px;
-}
-
-/* ===== Responsive Adjustments ===== */
-@media (max-width: 900px) {
-  .box, .header {
-    font-size: 0.75rem;
-    padding: 4px;
-  }
-}
-
-@media (max-width: 600px) {
-  .box, .header {
-    font-size: 0.7rem;
-    padding: 3px;
-  }
-}
-
-
-/* ===== Scoreboard (Less Height) ===== */
-#scoreboard {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  margin-bottom: 8px;
-  margin-top: 30px;
-}
-
-.team-box {
-  background: #0074D9;
-  color: white;
-  padding: 3px 6px;        /* reduce vertical padding */
-  border-radius: 4px;      /* smaller corners */
-  font-size: 13px;         /* slightly smaller font */
-  line-height: 1;          /* SHRINK height */
-  min-width: 75px;         /* smaller width */
-  text-align: center;
+  background: #ffcc00;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
 }
