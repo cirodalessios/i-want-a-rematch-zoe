@@ -39,13 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const questionText = document.getElementById("questionText");
   const showAnswerBtn = document.getElementById("showAnswerBtn");
   const closeBtn = document.getElementById("closeBtn");
+  const scoreboard = document.getElementById("scoreboard");
 
-  // ===== Scoreboard =====
-  const scoreboard = document.createElement("div");
-  scoreboard.id = "scoreboard";
-  document.body.insertBefore(scoreboard, document.querySelector(".board-container"));
-
-  teams.forEach((team,i) => {
+  // ===== Build Scoreboard =====
+  teams.forEach((team, i) => {
     const div = document.createElement("div");
     div.className = "team-box";
     div.innerHTML = `
@@ -57,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scoreboard.appendChild(div);
   });
 
-  // ===== Board Headers =====
+  // ===== Build Board Headers =====
   data.categories.forEach(cat => {
     const header = document.createElement("div");
     header.className = "header";
@@ -65,10 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
     board.appendChild(header);
   });
 
-  // ===== Question Boxes =====
+  // ===== Build Question Boxes =====
   const pointsValues = [200,300,400,500,600,700,800,900];
   pointsValues.forEach(points => {
-    for(let c=0; c<data.categories.length; c++){
+    for (let c = 0; c < data.categories.length; c++) {
       const box = document.createElement("div");
       box.className = "box";
       box.textContent = points;
@@ -85,40 +82,29 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ===== Show Answer =====
+  // ===== Show Answer Button =====
   showAnswerBtn.onclick = () => {
     questionText.textContent = questionText.dataset.answer;
-  }
+  };
 
   // ===== Close Modal =====
-  document.addEventListener("DOMContentLoaded", () => {
-  const board = document.getElementById("board");
-  const modal = document.getElementById("modal");
-  const questionText = document.getElementById("questionText");
-  const showAnswerBtn = document.getElementById("showAnswerBtn");
-  const closeBtn = document.getElementById("closeBtn");
-
-  // Close modal
   closeBtn.onclick = () => {
     modal.style.display = "none";
-  }; // ← semicolon here
-
-}); // ← make sure DOMContentLoaded callback ends here
-
+  };
 
   // ===== Scoreboard Buttons =====
   scoreboard.addEventListener("click", e => {
-    if(e.target.classList.contains("add-btn")){
+    if (e.target.classList.contains("add-btn")) {
       const idx = e.target.dataset.index;
       teams[idx].score += currentQuestionValue;
       teams[idx].scoreHistory.push(currentQuestionValue);
       document.getElementById(`score-${idx}`).textContent = teams[idx].score;
       e.target.textContent = `+${currentQuestionValue}`;
     }
-    if(e.target.classList.contains("subtract-btn")){
+    if (e.target.classList.contains("subtract-btn")) {
       const idx = e.target.dataset.index;
       const lastPoints = teams[idx].scoreHistory.pop();
-      if(lastPoints){
+      if (lastPoints) {
         teams[idx].score -= lastPoints;
         document.getElementById(`score-${idx}`).textContent = teams[idx].score;
       }
