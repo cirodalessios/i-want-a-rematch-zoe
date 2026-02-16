@@ -11,8 +11,8 @@ let currentQuestionValue = 0;
 // ===== Categories & Questions =====
 const data = {
   categories: [
-    "Brands", "History", "Science", "Movies", 
-    "Meaning", "Sports", "Music", "Random"
+    "Music", "Soundtrack", "Slang", "Movies", 
+    "Creepypasta", "Logos", "Propaganda", "Random"
   ],
   questions: {
    
